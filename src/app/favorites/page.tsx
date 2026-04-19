@@ -24,7 +24,9 @@ export default async function FavoritesPage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ButtonLink href="/signin">Tizimga kirish</ButtonLink>
+            <ButtonLink href="/signin" className="w-full sm:w-auto">
+              Tizimga kirish
+            </ButtonLink>
           </CardContent>
         </Card>
       </PageShell>

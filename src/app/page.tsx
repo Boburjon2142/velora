@@ -35,11 +35,11 @@ export default function HomePage() {
                 Velora sayyohlarga xavfsizlik, transport, ovqat, byudjet, madaniy yaqinlik va safar maqsadiga mos holda
                 yashash hududini tanlashga yordam beradi.
               </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <ButtonLink href="/discover" className="gap-2">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <ButtonLink href="/discover" className="w-full gap-2 sm:w-auto">
                   Shaharni tanlash <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
-                <ButtonLink href="/compare" variant="secondary">
+                <ButtonLink href="/compare" variant="secondary" className="w-full sm:w-auto">
                   Hududlarni taqqoslash
                 </ButtonLink>
               </div>
@@ -90,7 +90,7 @@ export default function HomePage() {
           title="Qidiruvdan yashash hududi tanlovigacha tartibli jarayon"
           description="Platforma sayohatchi ustuvorliklarini reytinglangan hududlar, byudjet hisoblari, xaritalar va marshrutlarga aylantiradi."
         />
-        <div className="mt-8 grid gap-5 md:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {[
             ['1', "Safar ma'lumotlarini kiriting", "Shahar, sana, byudjet darajasi, sur'at va ustuvorliklarni tanlang."],
             ['2', 'Hududlarni reytinglash', 'Dvigatel qulaylik modeliga tayangan holda hududlarni baholaydi.'],
@@ -115,7 +115,7 @@ export default function HomePage() {
             title="Jonli taqdimot uchun ishonchli boshlang'ich tarmoq"
             description="Har bir shahar sahifasida hududlar, byudjet oraliqlari, transport izohlari va sayohatchi bo'yicha yo'nalishlar bor."
           />
-          <div className="mt-8 grid gap-5 lg:grid-cols-4">
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {featuredCities.map((city) => (
               <Card key={city.slug} className="group overflow-hidden border-white/10 bg-white/5">
                 <CardContent className="p-0">
@@ -154,7 +154,7 @@ export default function HomePage() {
           title="Turli qulaylik profillariga ega amaliy yashash hududlari"
           description="Bu hududlar reyting, taqqoslash, xarita va marshrut rejalash uchun yetarlicha batafsil ma'lumotga ega."
         />
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {featuredNeighborhoods.map((neighborhood) => {
             const city = seedState.cities.find((item) => item.slug === neighborhood.citySlug);
             return (
@@ -238,7 +238,7 @@ export default function HomePage() {
 
       <PageShell className="py-16">
         <SectionHeading eyebrow="Fikrlar" title="Ishonchli safar rejalash uchun" />
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {seedState.testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="border-white/10 bg-white/5">
               <CardContent className="p-6">

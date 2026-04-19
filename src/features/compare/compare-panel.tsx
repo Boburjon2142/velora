@@ -45,7 +45,7 @@ export function ComparePanel() {
           <CardTitle>Choose neighborhoods to compare</CardTitle>
           <CardDescription>Select 2 to 4 stay areas, then the radar chart and score cards update immediately.</CardDescription>
         </CardHeader>
-        <CardContent className="grid gap-4 lg:grid-cols-4">
+        <CardContent className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
           {Array.from({ length: 4 }, (_, index) => (
             <div key={index}>
               <label className="mb-2 block text-sm font-medium text-slate-200">Option {index + 1}</label>
@@ -67,14 +67,19 @@ export function ComparePanel() {
               </select>
             </div>
           ))}
-          <div className="lg:col-span-4 flex flex-wrap gap-3 pt-2">
+          <div className="sm:col-span-2 xl:col-span-4 flex flex-col gap-3 pt-2 sm:flex-row">
             <Button
               onClick={() => router.push(`/compare?ids=${selected.filter(Boolean).join(',')}`)}
               disabled={selected.filter(Boolean).length < 2}
+              className="w-full sm:w-auto"
             >
               Apply comparison
             </Button>
-            <Button variant="secondary" onClick={() => setSelected(seedState.neighborhoods.slice(0, 2).map((item) => item.slug))}>
+            <Button
+              variant="secondary"
+              onClick={() => setSelected(seedState.neighborhoods.slice(0, 2).map((item) => item.slug))}
+              className="w-full sm:w-auto"
+            >
               Reset
             </Button>
           </div>
@@ -89,7 +94,7 @@ export function ComparePanel() {
               <CardDescription>Strong neighborhoods can still differ in quietness, budget, and transport convenience.</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-[420px] w-full">
+              <div className="h-[320px] w-full sm:h-[420px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadarChart data={chartData}>
                     <PolarGrid stroke="rgba(255,255,255,0.12)" />
@@ -103,7 +108,7 @@ export function ComparePanel() {
                         color: '#fff'
                       }}
                     />
-                    <Legend />
+                    <Legend wrapperStyle={{ fontSize: 12, paddingTop: 8 }} />
                     {neighborhoods.map((neighborhood, index) => (
                       <Radar
                         key={neighborhood.slug}
@@ -119,7 +124,7 @@ export function ComparePanel() {
             </CardContent>
           </Card>
 
-          <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
             {neighborhoods.map((neighborhood) => (
               <Card key={neighborhood.slug} className="border-white/10 bg-white/5">
                 <CardHeader>
@@ -148,7 +153,7 @@ export function ComparePanel() {
                       )}
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
                     {metrics.map(([key, label]) => (
                       <div key={key} className="rounded-2xl border border-white/10 bg-slate-950/60 p-3">
                         <div className="text-xs uppercase tracking-[0.2em] text-slate-500">{label}</div>

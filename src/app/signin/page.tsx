@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -37,11 +37,11 @@ export default function SignInPage() {
   }
 
   return (
-    <div className="mx-auto flex min-h-[80vh] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
+    <div className="mx-auto flex min-h-[80vh] max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
       <div className="grid w-full gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-6">
           <div className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Tizimga kirish</div>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+          <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
             Hududlar, marshrutlar va taqqoslashlarni saqlash uchun tizimga kiring.
           </h1>
           <p className="max-w-xl text-sm leading-7 text-slate-400">
@@ -58,7 +58,7 @@ export default function SignInPage() {
             <form action={handleSubmit} className="space-y-5">
               <div>
                 <Label>Email</Label>
-                <Input name="email" type="email" placeholder="name@example.com" required />
+                <Input name="email" type="email" placeholder="••••••••" required />
               </div>
               <div>
                 <Label>Parol</Label>
@@ -74,3 +74,4 @@ export default function SignInPage() {
     </div>
   );
 }
+

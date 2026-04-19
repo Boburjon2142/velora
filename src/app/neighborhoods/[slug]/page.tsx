@@ -41,24 +41,24 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
 
   return (
     <PageShell className="py-12">
-      <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+      <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
             <div className="flex flex-wrap items-center gap-3">
               <Badge>{city?.name}</Badge>
               <Badge className="bg-white/5 text-slate-200">{neighborhood.priceTier}</Badge>
             </div>
-            <CardTitle className="mt-4 text-4xl">{neighborhood.name}</CardTitle>
+            <CardTitle className="mt-4 text-3xl sm:text-4xl">{neighborhood.name}</CardTitle>
             <CardDescription className="max-w-3xl text-base">{neighborhood.summary}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-5">
             <p className="text-sm leading-7 text-slate-300">{neighborhood.transitNotes}</p>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <SaveNeighborhoodButton slug={neighborhood.slug} />
-              <ButtonLink href={`/compare?ids=${neighborhood.slug}`} variant="secondary">
+              <ButtonLink href={`/compare?ids=${neighborhood.slug}`} variant="secondary" className="w-full sm:w-auto">
                 Ushbu hududni taqqoslash
               </ButtonLink>
-              <ButtonLink href="/itinerary" variant="ghost">
+              <ButtonLink href="/itinerary" variant="ghost" className="w-full sm:w-auto">
                 Marshrut yaratish
               </ButtonLink>
             </div>
@@ -88,7 +88,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </Card>
       </div>
 
-      <section className="mt-14 grid gap-5 lg:grid-cols-3">
+      <section className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
             <CardTitle>Eng mos</CardTitle>
@@ -222,7 +222,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
             <CardTitle>Sayohatchi fikrlari</CardTitle>
             <CardDescription>Hududning amalda qanday tuyulishini ko'rsatadigan tayyor fikrlar.</CardDescription>
           </CardHeader>
-          <CardContent className="grid gap-4 md:grid-cols-3">
+          <CardContent className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {testimonials.map((testimonial) => (
               <div key={testimonial.id} className="rounded-2xl border border-white/10 bg-slate-950/60 p-4">
                 <div className="flex items-center justify-between">

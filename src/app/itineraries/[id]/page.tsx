@@ -33,7 +33,7 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
             <Badge className="bg-white/5 text-slate-200">{neighborhood?.name}</Badge>
             <Badge className="bg-white/5 text-slate-200">{itinerary.pace}</Badge>
           </div>
-          <CardTitle className="mt-4 text-4xl">{itinerary.title}</CardTitle>
+          <CardTitle className="mt-4 text-3xl sm:text-4xl">{itinerary.title}</CardTitle>
           <CardDescription>{itinerary.days.length} kunlik amaliy yo'nalish, ovqat to'xtashlari va vaqt bo'limlari.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
@@ -55,7 +55,7 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
               </div>
             </div>
           ))}
-          <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="secondary">
+          <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="secondary" className="w-full sm:w-auto">
             Hudud profilini ochish
           </ButtonLink>
         </CardContent>

@@ -59,7 +59,7 @@ export function AdminDashboard() {
 
   return (
     <div className="space-y-6">
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         <Card className="border-white/10 bg-white/5">
           <CardContent className="p-5">
             <div className="text-xs uppercase tracking-[0.24em] text-slate-500">Cities</div>
@@ -92,9 +92,9 @@ export function AdminDashboard() {
         </Card>
       ) : (
         <Tabs defaultValue="cities">
-          <TabsList className="flex flex-wrap gap-2 rounded-3xl border border-white/10 bg-white/5 p-2">
+          <TabsList className="flex w-full flex-nowrap gap-2 overflow-x-auto rounded-3xl border border-white/10 bg-white/5 p-2">
             {['cities', 'neighborhoods', 'scores', 'prices', 'services', 'labels', 'testimonials'].map((item) => (
-              <TabsTrigger key={item} value={item} className="rounded-2xl">
+              <TabsTrigger key={item} value={item} className="min-w-max rounded-2xl whitespace-nowrap">
                 {item}
               </TabsTrigger>
             ))}
@@ -401,7 +401,7 @@ function ScoreSettingsEditor({
   const [draft, setDraft] = useState(settings);
   return (
     <form
-      className="grid gap-4 md:grid-cols-2 xl:grid-cols-3"
+      className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3"
       onSubmit={async (event) => {
         event.preventDefault();
         await onSubmit(draft);
@@ -420,7 +420,7 @@ function ScoreSettingsEditor({
           />
         </Field>
       ))}
-      <div className="md:col-span-2 xl:col-span-3">
+      <div className="sm:col-span-2 xl:col-span-3">
         <Button type="submit" disabled={pending}>
           Save settings
         </Button>
@@ -443,7 +443,7 @@ function PriceEditor({
   const [premiumNightly, setPremiumNightly] = useState(priceProfile.nightlyStay.premium);
   return (
     <form
-      className="grid gap-4 md:grid-cols-3"
+      className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
       onSubmit={async (event) => {
         event.preventDefault();
         await onSubmit({ citySlug: priceProfile.citySlug, budgetNightly, balancedNightly, premiumNightly });
@@ -459,7 +459,7 @@ function PriceEditor({
       <Field label="Premium nightly">
         <Input type="number" value={premiumNightly} onChange={(e) => setPremiumNightly(Number(e.target.value))} />
       </Field>
-      <div className="md:col-span-3">
+      <div className="sm:col-span-2 lg:col-span-3">
         <Button type="submit" disabled={pending}>
           Save price profile
         </Button>
@@ -652,7 +652,7 @@ function TestimonialForm({
   const [rating, setRating] = useState(5);
   return (
     <form
-      className="grid gap-4 md:grid-cols-2"
+      className="grid gap-4 sm:grid-cols-2"
       onSubmit={async (event) => {
         event.preventDefault();
         await onSubmit({ citySlug, travelerLabelId, name, title, quote, rating });
@@ -675,7 +675,7 @@ function TestimonialForm({
       <Field label="Title">
         <Input value={title} onChange={(event) => setTitle(event.target.value)} />
       </Field>
-      <div className="md:col-span-2">
+      <div className="sm:col-span-2">
         <Field label="Quote">
           <Textarea value={quote} onChange={(event) => setQuote(event.target.value)} />
         </Field>
@@ -683,7 +683,7 @@ function TestimonialForm({
       <Field label="Rating">
         <Input type="number" min={1} max={5} value={rating} onChange={(event) => setRating(Number(event.target.value))} />
       </Field>
-      <div className="md:col-span-2">
+      <div className="sm:col-span-2">
         <Button type="submit" disabled={pending}>
           Add testimonial
         </Button>

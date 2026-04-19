@@ -93,7 +93,7 @@ export function ItineraryPlanner() {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+    <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
       <Card className="border-white/10 bg-white/5">
         <CardHeader>
           <CardTitle>Reja sozlamalari</CardTitle>
@@ -229,11 +229,11 @@ export function ItineraryPlanner() {
                 </div>
               ))}
 
-              <div className="flex flex-wrap gap-3">
-                <Button onClick={savePlan} variant="secondary">
+              <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                <Button onClick={savePlan} variant="secondary" className="w-full sm:w-auto">
                   Marshrutni sevimlilarga saqlash
                 </Button>
-                <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="ghost">
+                <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="ghost" className="w-full sm:w-auto">
                   Hududni ochish
                 </ButtonLink>
               </div>

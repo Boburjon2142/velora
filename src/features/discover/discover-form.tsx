@@ -86,7 +86,7 @@ export function DiscoverForm() {
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+    <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
       <Card className="border-white/10 bg-white/5">
         <CardHeader>
           <CardTitle>Sayohat afzalliklari formasi</CardTitle>
@@ -97,7 +97,7 @@ export function DiscoverForm() {
         <CardContent>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="grid gap-5 sm:grid-cols-2"
+            className="grid gap-4 sm:grid-cols-2"
             noValidate
           >
             <Field label="Boriladigan shahar" error={form.formState.errors.citySlug?.message}>
@@ -196,12 +196,12 @@ export function DiscoverForm() {
               </div>
             </div>
 
-            <div className="sm:col-span-2 flex items-center gap-3 pt-2">
-              <Button type="submit" disabled={pending || mutation.isPending} className="gap-2">
+            <div className="sm:col-span-2 flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
+              <Button type="submit" disabled={pending || mutation.isPending} className="w-full gap-2 sm:w-auto">
                 {pending || mutation.isPending ? 'Tavsiyalar tayyorlanmoqda...' : 'Tavsiyalarni yaratish'}
                 <ArrowRight className="h-4 w-4" />
               </Button>
-              <ButtonLink variant="secondary" href="/compare">
+              <ButtonLink variant="secondary" href="/compare" className="w-full sm:w-auto">
                 Taqqoslash sahifasini ochish
               </ButtonLink>
             </div>
@@ -236,13 +236,13 @@ export function DiscoverForm() {
                 const neighborhood = seedState.neighborhoods.find((entry) => entry.slug === item.neighborhoodSlug);
                 return (
                   <div key={item.neighborhoodSlug} className="rounded-3xl border border-white/10 bg-slate-950/60 p-5">
-                    <div className="flex items-start justify-between gap-4">
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
                         <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">O'rin {index + 1}</div>
                         <div className="mt-1 text-xl font-semibold text-white">{neighborhood?.name}</div>
                         <div className="mt-1 text-sm text-slate-400">{neighborhood?.summary}</div>
                       </div>
-                      <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-right">
+                      <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-left sm:text-right">
                         <div className="text-xs uppercase tracking-[0.24em] text-cyan-200">Qulaylik</div>
                         <div className="text-2xl font-semibold text-white">{item.comfortScore}</div>
                       </div>
@@ -268,11 +268,15 @@ export function DiscoverForm() {
                       <div className="text-sm text-slate-400">Taxminiy safar narxi</div>
                       <div className="text-sm font-medium text-white">{formatCurrency(item.priceEstimate)}</div>
                     </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      <ButtonLink href={`/neighborhoods/${item.neighborhoodSlug}`} variant="secondary">
+                    <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+                      <ButtonLink href={`/neighborhoods/${item.neighborhoodSlug}`} variant="secondary" className="w-full sm:w-auto">
                         Profilni ochish
                       </ButtonLink>
-                      <ButtonLink href={`/compare?ids=${selectedRecommendations.map((n) => n.neighborhoodSlug).join(',')}`} variant="ghost">
+                      <ButtonLink
+                        href={`/compare?ids=${selectedRecommendations.map((n) => n.neighborhoodSlug).join(',')}`}
+                        variant="ghost"
+                        className="w-full sm:w-auto"
+                      >
                         Reytinglangan variantlarni taqqoslash
                       </ButtonLink>
                     </div>

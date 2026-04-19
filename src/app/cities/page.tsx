@@ -14,7 +14,7 @@ export default function CitiesDirectoryPage() {
         title="Tayyorlangan yo'nalishlarni ko'ring"
         description="Har bir shaharda hudud yo'nalishlari, byudjet konteksti, safar zonalari va ishonch signallari bor."
       />
-      <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+      <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {seedState.cities.map((city) => (
           <Card key={city.slug} className="border-white/10 bg-white/5">
             <CardHeader>

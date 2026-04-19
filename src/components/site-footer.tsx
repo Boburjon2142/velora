@@ -10,7 +10,7 @@ export function SiteFooter() {
             Shahar ichida qolish uchun eng qulay hududni tanlashga yordam beradigan ishonchli platforma.
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-6 text-sm text-slate-300">
+        <div className="grid gap-6 sm:grid-cols-2 text-sm text-slate-300">
           <div className="space-y-2">
             <div className="font-medium text-white">Ko'rib chiqish</div>
             <Link className="block" href="/discover">

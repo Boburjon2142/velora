@@ -34,7 +34,7 @@ export function BudgetPlanner() {
   ];
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+    <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
       <Card className="border-white/10 bg-white/5">
         <CardHeader>
           <CardTitle>Trip assumptions</CardTitle>
@@ -111,7 +111,7 @@ export function BudgetPlanner() {
             <CardTitle>Breakdown</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="h-80">
+            <div className="h-72 sm:h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <BarChart data={breakdown}>
                   <CartesianGrid stroke="rgba(255,255,255,0.1)" vertical={false} />

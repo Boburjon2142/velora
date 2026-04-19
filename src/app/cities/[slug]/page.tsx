@@ -32,24 +32,24 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
 
   return (
     <PageShell className="py-12">
-      <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
             <Badge className="w-fit">{city.region}</Badge>
-            <CardTitle className="mt-4 text-4xl">{city.name}</CardTitle>
+            <CardTitle className="mt-4 text-3xl sm:text-4xl">{city.name}</CardTitle>
             <CardDescription className="max-w-2xl text-base">{city.overview}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            <div className="grid gap-4 sm:grid-cols-3">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
               <MetaStat label="Eng yaxshi vaqt" value={city.bestTimeToVisit} />
               <MetaStat label="Qulaylik profili" value={city.comfortSummary} />
               <MetaStat label="Kunlik byudjet" value={`${formatCurrency(city.averageDailyBudget.balanced)} balansli`} />
             </div>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink href="/discover" className="gap-2">
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <ButtonLink href="/discover" className="w-full gap-2 sm:w-auto">
                 Hudud qidirish <ArrowRight className="h-4 w-4" />
               </ButtonLink>
-              <ButtonLink href="/compare" variant="secondary">
+              <ButtonLink href="/compare" variant="secondary" className="w-full sm:w-auto">
                 Yashash hududlarini taqqoslash
               </ButtonLink>
             </div>
@@ -76,11 +76,11 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
           title="Sayohatchilar ko'rishi kerak bo'lgan asosiy yashash hududlari"
           description="Bu hududlar shahar sahifasi tavsiya mantiqi va taqqoslash ko'rinishini belgilaydi."
         />
-        <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {neighborhoods.map((neighborhood) => (
             <Card key={neighborhood.slug} className="border-white/10 bg-white/5">
               <CardHeader>
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex items-start justify-between gap-4">
                   <CardTitle>{neighborhood.name}</CardTitle>
                   <Badge>{neighborhood.priceTier}</Badge>
                 </div>
@@ -88,7 +88,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-sm leading-6 text-slate-300">{neighborhood.summary}</p>
-                <div className="grid grid-cols-2 gap-3 text-sm">
+                <div className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
                   <Stat label="Xavfsizlik" value={neighborhood.scores.safety} />
                   <Stat label="Transport" value={neighborhood.scores.transport} />
                   <Stat label="Piyoda qulaylik" value={neighborhood.scores.walkability} />

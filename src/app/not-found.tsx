@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-2xl flex-col items-center justify-center px-6 text-center">
       <div className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">Topilmadi</div>
-      <h1 className="mt-4 text-4xl font-semibold text-white">Bu sahifa mavjud emas.</h1>
+      <h1 className="mt-4 text-3xl font-semibold text-white sm:text-4xl">Bu sahifa mavjud emas.</h1>
       <p className="mt-4 text-sm leading-6 text-slate-400">
         So'ralgan manzil topilmadi. Davom etish uchun asosiy menyudan foydalaning.
       </p>
