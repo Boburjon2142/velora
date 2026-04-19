@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useMemo, useState, useTransition, type ComponentType, type ReactNode } from 'react';
 import { useMutation } from '@tanstack/react-query';
@@ -54,16 +54,16 @@ export function ItineraryPlanner() {
         })
       });
       if (!response.ok) {
-        throw new Error('Unable to generate itinerary');
+        throw new Error("Marshrut yaratib bo'lmadi");
       }
       return (await response.json()) as ItineraryResponse;
     },
     onSuccess(data) {
       setItinerary(data.itinerary);
-      toast.success('Itinerary generated');
+      toast.success('Marshrut yaratildi');
     },
     onError() {
-      toast.error('Please sign in to generate itineraries');
+      toast.error('Marshrut yaratish uchun tizimga kiring');
     }
   });
 
@@ -80,10 +80,10 @@ export function ItineraryPlanner() {
       })
     });
     if (!response.ok) {
-      toast.error('Please sign in to save the plan');
+      toast.error('Rejani saqlash uchun tizimga kiring');
       return;
     }
-    toast.success('Plan saved');
+    toast.success('Reja saqlandi');
   }
 
   function generate() {
@@ -96,12 +96,12 @@ export function ItineraryPlanner() {
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
       <Card className="border-white/10 bg-white/5">
         <CardHeader>
-          <CardTitle>Planner inputs</CardTitle>
-          <CardDescription>Generate 1-day, 3-day, or 5-day plans based on city, pace, and traveler profile.</CardDescription>
+          <CardTitle>Reja sozlamalari</CardTitle>
+          <CardDescription>Shahar, sur'at va sayohatchi profiliga qarab 1, 3 yoki 5 kunlik rejalar yarating.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
           <SelectField
-            label="City"
+            label="Shahar"
             value={citySlug}
             onChange={(value) => {
               setCitySlug(value);
@@ -115,14 +115,14 @@ export function ItineraryPlanner() {
               </option>
             ))}
           </SelectField>
-          <SelectField label="Neighborhood" value={neighborhoodSlug} onChange={setNeighborhoodSlug}>
+          <SelectField label="Hudud" value={neighborhoodSlug} onChange={setNeighborhoodSlug}>
             {neighborhoods.map((item) => (
               <option key={item.slug} value={item.slug}>
                 {item.name}
               </option>
             ))}
           </SelectField>
-          <SelectField label="Traveler type" value={travelerLabelId} onChange={setTravelerLabelId}>
+          <SelectField label="Sayohatchi turi" value={travelerLabelId} onChange={setTravelerLabelId}>
             {seedState.travelerLabels.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.name}
@@ -131,27 +131,27 @@ export function ItineraryPlanner() {
           </SelectField>
 
           <div>
-            <div className="mb-2 text-sm font-medium text-slate-200">Duration</div>
+            <div className="mb-2 text-sm font-medium text-slate-200">Davomiylik</div>
             <div className="flex flex-wrap gap-2">
-              {[1, 3, 5].map((days) => (
+              {[1, 3, 5].map((kun) => (
                 <button
-                  key={days}
+                  key={kun}
                   type="button"
-                  onClick={() => setDurationDays(days as 1 | 3 | 5)}
+                  onClick={() => setDurationDays(kun as 1 | 3 | 5)}
                   className={`rounded-full border px-4 py-2 text-sm transition ${
-                    durationDays === days
+                    durationDays === kun
                       ? 'border-cyan-400/20 bg-cyan-400/10 text-cyan-100'
                       : 'border-white/10 bg-white/5 text-slate-300'
                   }`}
                 >
-                  {days}-day
+                  {kun}-day
                 </button>
               ))}
             </div>
           </div>
 
           <div>
-            <div className="mb-2 text-sm font-medium text-slate-200">Pace</div>
+            <div className="mb-2 text-sm font-medium text-slate-200">Sur'at</div>
             <div className="flex flex-wrap gap-2">
               {(['relaxed', 'balanced', 'fast'] as const).map((item) => (
                 <button
@@ -171,7 +171,7 @@ export function ItineraryPlanner() {
           </div>
 
           <Button onClick={generate} disabled={pending || mutation.isPending} className="w-full gap-2">
-            {pending || mutation.isPending ? 'Generating...' : 'Generate itinerary'}
+            {pending || mutation.isPending ? 'Yaratilmoqda...' : 'Marshrut yaratish'}
             <ArrowRight className="h-4 w-4" />
           </Button>
         </CardContent>
@@ -180,16 +180,16 @@ export function ItineraryPlanner() {
       <div className="space-y-5">
         <Card className="border-cyan-400/15 bg-slate-950/60">
           <CardHeader>
-            <CardTitle>Current trip profile</CardTitle>
+            <CardTitle>Joriy safar profili</CardTitle>
             <CardDescription>
-              The itinerary blends neighborhood rhythm, traveler type, and real travel practicality.
+              Marshrut hudud ritmi, sayohatchi turi va amaliy safar tafsilotlarini birlashtiradi.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2">
-            <Stat icon={MapPinned} label="City" value={seedState.cities.find((item) => item.slug === citySlug)?.name ?? citySlug} />
-            <Stat icon={CalendarRange} label="Duration" value={`${durationDays} days`} />
-            <Stat icon={Clock3} label="Pace" value={pace} />
-            <Stat icon={UtensilsCrossed} label="Traveler" value={seedState.travelerLabels.find((item) => item.id === travelerLabelId)?.name ?? travelerLabelId} />
+            <Stat icon={MapPinned} label="Shahar" value={seedState.cities.find((item) => item.slug === citySlug)?.name ?? citySlug} />
+            <Stat icon={CalendarRange} label="Davomiylik" value={`${durationDays} kun`} />
+            <Stat icon={Clock3} label="Sur'at" value={pace} />
+            <Stat icon={UtensilsCrossed} label="Sayohatchi" value={seedState.travelerLabels.find((item) => item.id === travelerLabelId)?.name ?? travelerLabelId} />
           </CardContent>
         </Card>
 
@@ -199,9 +199,9 @@ export function ItineraryPlanner() {
               <div className="flex items-center justify-between gap-4">
                 <div>
                   <CardTitle>{itinerary.title}</CardTitle>
-                  <CardDescription>{itinerary.days.length} structured day blocks with practical notes.</CardDescription>
+                  <CardDescription>{itinerary.days.length} kunlik tuzilmali bloklar va amaliy eslatmalar.</CardDescription>
                 </div>
-                <Badge>{formatCurrency(seedState.neighborhoods.find((item) => item.slug === itinerary.neighborhoodSlug)?.dailyBudget.balanced ?? 0)} / day</Badge>
+                <Badge>{formatCurrency(seedState.neighborhoods.find((item) => item.slug === itinerary.neighborhoodSlug)?.dailyBudget.balanced ?? 0)} / kun</Badge>
               </div>
             </CardHeader>
             <CardContent className="space-y-5">
@@ -209,7 +209,7 @@ export function ItineraryPlanner() {
                 <div key={day.day} className="rounded-3xl border border-white/10 bg-slate-950/60 p-5">
                   <div className="flex items-center justify-between gap-3">
                     <div>
-                      <div className="text-xs uppercase tracking-[0.24em] text-cyan-300">Day {day.day}</div>
+                      <div className="text-xs uppercase tracking-[0.24em] text-cyan-300">Kun {day.day}</div>
                       <div className="mt-1 text-lg font-semibold text-white">{day.theme}</div>
                     </div>
                     <Badge className="bg-white/5 text-slate-200">{pace}</Badge>
@@ -231,10 +231,10 @@ export function ItineraryPlanner() {
 
               <div className="flex flex-wrap gap-3">
                 <Button onClick={savePlan} variant="secondary">
-                  Save itinerary to favorites
+                  Marshrutni sevimlilarga saqlash
                 </Button>
                 <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="ghost">
-                  Open neighborhood
+                  Hududni ochish
                 </ButtonLink>
               </div>
             </CardContent>
@@ -242,7 +242,7 @@ export function ItineraryPlanner() {
         ) : (
           <Card className="border-white/10 bg-white/5">
             <CardContent className="p-8 text-sm leading-6 text-slate-400">
-              Generate an itinerary to see day blocks, food stops, and practical timing guidance.
+              Kun bloklari, ovqat to'xtashlari va amaliy vaqt tavsiyalarini ko'rish uchun marshrut yarating.
             </CardContent>
           </Card>
         )}
@@ -295,3 +295,4 @@ function Stat({
     </div>
   );
 }
+

@@ -6,9 +6,9 @@ export default function DiscoverPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Smart preference form"
-        title="Tell us what kind of trip this is"
-        description="Use this structured form to get ranked neighborhood recommendations that reflect comfort, budget, transport, and travel goals."
+        eyebrow="Aqlli afzalliklar formasi"
+        title="Bu qanday safar ekanini yozing"
+        description="Qulaylik, byudjet, transport va safar maqsadlarini hisobga olgan reytingli tavsiyalar olish uchun ushbu shakldan foydalaning."
       />
       <div className="mt-10">
         <DiscoverForm />

@@ -40,18 +40,19 @@ export default function SignInPage() {
     <div className="mx-auto flex min-h-[80vh] max-w-7xl items-center px-4 py-16 sm:px-6 lg:px-8">
       <div className="grid w-full gap-8 lg:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-6">
-          <div className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Institutional access</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-300">Tizimga kirish</div>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-            Sign in to save neighborhoods, itineraries, and comparison sets.
+            Hududlar, marshrutlar va taqqoslashlarni saqlash uchun tizimga kiring.
           </h1>
           <p className="max-w-xl text-sm leading-7 text-slate-400">
-            Signed-in users can revisit searches, maintain favorites, and access the internal admin workspace if their account is authorized.
+            Kirgan foydalanuvchilar qidiruvlarni qayta ko'rishi, sevimlilarni saqlashi va ruxsati bo'lsa admin
+            ish maydoniga kirishi mumkin.
           </p>
         </div>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Sign in</CardTitle>
-            <CardDescription>Use the credentials provided in the local environment configuration.</CardDescription>
+            <CardTitle>Kirish</CardTitle>
+            <CardDescription>Mahalliy muhit sozlamalarida berilgan ma'lumotlardan foydalaning.</CardDescription>
           </CardHeader>
           <CardContent>
             <form action={handleSubmit} className="space-y-5">
@@ -60,11 +61,11 @@ export default function SignInPage() {
                 <Input name="email" type="email" placeholder="name@example.com" required />
               </div>
               <div>
-                <Label>Password</Label>
+                <Label>Parol</Label>
                 <Input name="password" type="password" placeholder="••••••••" required />
               </div>
               <Button type="submit" disabled={pending} className="w-full">
-                {pending ? 'Signing in...' : 'Continue'}
+                {pending ? 'Kirish amalga oshirilmoqda...' : 'Davom etish'}
               </Button>
             </form>
           </CardContent>

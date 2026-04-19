@@ -18,13 +18,13 @@ export default async function FavoritesPage() {
       <PageShell className="py-14">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Saved plans require sign-in</CardTitle>
+            <CardTitle>Saqlangan rejalar uchun kirish kerak</CardTitle>
             <CardDescription>
-              Sign in to save neighborhoods, revisit searches, and compare previously selected options.
+              Hududlarni saqlash, qidiruvlarni qayta ko'rish va oldin tanlangan variantlarni taqqoslash uchun tizimga kiring.
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <ButtonLink href="/signin">Institutional access</ButtonLink>
+            <ButtonLink href="/signin">Tizimga kirish</ButtonLink>
           </CardContent>
         </Card>
       </PageShell>
@@ -39,15 +39,15 @@ export default async function FavoritesPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Favorites"
-        title="Your saved neighborhoods, itineraries, and past searches"
-        description="Revisit plan decisions and continue comparing areas without starting from zero."
+        eyebrow="Sevimlilar"
+        title="Saqlangan hududlar, marshrutlar va oldingi qidiruvlar"
+        description="Reja qarorlarini qayta ko'ring va taqqoslashni noldan boshlamasdan davom ettiring."
       />
 
       <div className="mt-10 grid gap-5 lg:grid-cols-3">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Saved neighborhoods</CardTitle>
+            <CardTitle>Saqlangan hududlar</CardTitle>
             <CardDescription>{savedNeighborhoods.length} saved options.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -67,14 +67,14 @@ export default async function FavoritesPage() {
                 );
               })
             ) : (
-              <EmptyState text="No saved neighborhoods yet." />
+              <EmptyState text="Hozircha saqlangan hudud yo'q." />
             )}
           </CardContent>
         </Card>
 
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Saved itineraries</CardTitle>
+            <CardTitle>Saqlangan marshrutlar</CardTitle>
             <CardDescription>{savedPlans.length} saved plans.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -91,14 +91,14 @@ export default async function FavoritesPage() {
                 </div>
               ))
             ) : (
-              <EmptyState text="No saved itineraries yet." />
+              <EmptyState text="Hozircha saqlangan marshrut yo'q." />
             )}
           </CardContent>
         </Card>
 
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Recent searches</CardTitle>
+            <CardTitle>So'nggi qidiruvlar</CardTitle>
             <CardDescription>{history.length} search records.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
@@ -118,7 +118,7 @@ export default async function FavoritesPage() {
                 </div>
               ))
             ) : (
-              <EmptyState text="No search history yet." />
+              <EmptyState text="Hozircha qidiruv tarixi yo'q." />
             )}
           </CardContent>
         </Card>

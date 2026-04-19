@@ -5,26 +5,26 @@ export function SiteFooter() {
     <footer className="border-t border-white/10 bg-slate-950">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:px-6 lg:grid-cols-3 lg:px-8">
         <div>
-          <div className="text-lg font-semibold text-white">Tourist Comfort Finder</div>
+          <div className="text-lg font-semibold text-white">Velora</div>
           <p className="mt-3 max-w-md text-sm leading-6 text-slate-400">
-            A polished, trustworthy platform for choosing the most convenient area to stay in a city.
+            Shahar ichida qolish uchun eng qulay hududni tanlashga yordam beradigan ishonchli platforma.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-6 text-sm text-slate-300">
           <div className="space-y-2">
-            <div className="font-medium text-white">Explore</div>
+            <div className="font-medium text-white">Ko'rib chiqish</div>
             <Link className="block" href="/discover">
-              Search
+              Qidirish
             </Link>
             <Link className="block" href="/compare">
-              Compare
+              Taqqoslash
             </Link>
             <Link className="block" href="/budget">
-              Budget
+              Byudjet
             </Link>
           </div>
           <div className="space-y-2">
-            <div className="font-medium text-white">Reference</div>
+            <div className="font-medium text-white">Ma'lumot</div>
             <Link className="block" href="/cities/samarkand">
               Samarkand
             </Link>
@@ -32,14 +32,14 @@ export function SiteFooter() {
               Bukhara
             </Link>
             <Link className="block" href="/favorites">
-              Saved plans
+              Saqlangan rejalar
             </Link>
           </div>
         </div>
         <div className="rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-slate-300">
-          <div className="font-medium text-white">Institutional readiness</div>
+          <div className="font-medium text-white">Taqdimotga tayyor</div>
           <p className="mt-2 leading-6">
-            Built for live demonstrations, public-facing reviews, and practical travel planning.
+            Jonli namoyish, ochiq ko'rik va amaliy sayohat rejalashtirish uchun tayyorlangan.
           </p>
         </div>
       </div>

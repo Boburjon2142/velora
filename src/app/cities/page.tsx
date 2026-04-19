@@ -10,9 +10,9 @@ export default function CitiesDirectoryPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Cities"
-        title="Explore the seeded destinations"
-        description="Each city includes neighborhood guidance, budget context, travel zones, and trust signals."
+        eyebrow="Shaharlar"
+        title="Tayyorlangan yo'nalishlarni ko'ring"
+        description="Har bir shaharda hudud yo'nalishlari, byudjet konteksti, safar zonalari va ishonch signallari bor."
       />
       <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         {seedState.cities.map((city) => (
@@ -32,7 +32,7 @@ export default function CitiesDirectoryPage() {
                 {city.transportOverview}
               </div>
               <Link className="text-sm font-medium text-cyan-200" href={`/cities/${city.slug}`}>
-                Open city profile
+                Shahar profilini ochish
               </Link>
             </CardContent>
           </Card>

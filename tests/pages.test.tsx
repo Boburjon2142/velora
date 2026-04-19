@@ -7,11 +7,11 @@ import CitiesDirectoryPage from '@/app/cities/page';
 describe('public pages', () => {
   it('renders the landing page hero', () => {
     render(<HomePage />);
-    expect(screen.getByText(/Find the most comfortable area to stay/i)).toBeInTheDocument();
+    expect(screen.getByText(/Har bir shaharda qolish uchun eng qulay hududni toping/i)).toBeInTheDocument();
   });
 
   it('renders the cities directory', () => {
     render(<CitiesDirectoryPage />);
-    expect(screen.getByText(/Explore the seeded destinations/i)).toBeInTheDocument();
+    expect(screen.getByText(/Tayyorlangan yo'nalishlarni ko'ring/i)).toBeInTheDocument();
   });
 });

@@ -6,9 +6,9 @@ export default function ItineraryPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Itinerary planner"
-        title="Generate a usable trip plan"
-        description="Create 1-day, 3-day, or 5-day itineraries that include time blocks, food stops, practical notes, and travel tips."
+        eyebrow="Marshrut rejalashtiruvchi"
+        title="Amaliy safar rejasini yarating"
+        description="1 kunlik, 3 kunlik yoki 5 kunlik marshrutlarda vaqt bo'limlari, ovqat to'xtashlari, amaliy eslatmalar va maslahatlar bo'ladi."
       />
       <div className="mt-10">
         <ItineraryPlanner />

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useMemo, useState, useTransition, type ReactNode } from 'react';
 import { z } from 'zod';
@@ -18,20 +18,20 @@ import { formatCurrency } from '@/lib/utils';
 import { toast } from 'sonner';
 
 const priorityOptions = [
-  ['safety', 'Safety'],
+  ['safety', 'Xavfsizlik'],
   ['transport', 'Transport'],
-  ['walkability', 'Walkability'],
-  ['familyFriendliness', 'Family'],
-  ['foodAccess', 'Food'],
-  ['halalFood', 'Halal food'],
-  ['nightlife', 'Nightlife'],
-  ['quietness', 'Quiet area'],
+  ['walkability', 'Piyoda qulaylik'],
+  ['familyFriendliness', 'Oila'],
+  ['foodAccess', 'Ovqat'],
+  ['halalFood', 'Halol ovqat'],
+  ['nightlife', 'Tungi hayot'],
+  ['quietness', 'Sokin hudud'],
   ['workInternet', 'Internet'],
   ['coworkingAccess', 'Coworking'],
-  ['shopping', 'Shopping'],
-  ['culturalAccess', 'Culture'],
-  ['greenAreas', 'Green spaces'],
-  ['airportAccess', 'Airport access']
+  ['shopping', 'Xarid'],
+  ['culturalAccess', 'Madaniyat'],
+  ['greenAreas', 'Yashil hududlar'],
+  ['airportAccess', 'Aeroportga yaqinlik']
 ] as const;
 
 type FormValues = z.input<typeof searchPreferenceSchema>;
@@ -52,9 +52,9 @@ export function DiscoverForm() {
       travelerCount: 2,
       travelerLabelId: seedState.travelerLabels[0].id,
       budget: 'balanced',
-      accommodationPreference: 'Boutique hotel',
+      accommodationPreference: 'Butik mehmonxona',
       priorities: {},
-      languagePreference: 'English',
+      languagePreference: "O'zbek / Ingliz",
       pace: 'balanced'
     }
   });
@@ -81,7 +81,7 @@ export function DiscoverForm() {
     startTransition(async () => {
       const result = await mutation.mutateAsync(payload);
       setSelectedRecommendations(result.recommendations);
-      toast.success('Recommendations generated');
+      toast.success('Tavsiyalar yaratildi');
     });
   }
 
@@ -89,9 +89,9 @@ export function DiscoverForm() {
     <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
       <Card className="border-white/10 bg-white/5">
         <CardHeader>
-          <CardTitle>Travel preference form</CardTitle>
+          <CardTitle>Sayohat afzalliklari formasi</CardTitle>
           <CardDescription>
-            The more precisely you describe the trip, the better the ranking and explanation quality.
+            Safarni qanchalik aniq tasvirlasangiz, tavsiya va izoh shunchalik yaxshi bo'ladi.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -100,7 +100,7 @@ export function DiscoverForm() {
             className="grid gap-5 sm:grid-cols-2"
             noValidate
           >
-            <Field label="Destination city" error={form.formState.errors.citySlug?.message}>
+            <Field label="Boriladigan shahar" error={form.formState.errors.citySlug?.message}>
               <select
                 className="h-11 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-sm text-white"
                 {...form.register('citySlug')}
@@ -113,19 +113,19 @@ export function DiscoverForm() {
               </select>
             </Field>
 
-            <Field label="Travel date" error={form.formState.errors.travelDates?.message}>
+            <Field label="Safar sanasi" error={form.formState.errors.travelDates?.message}>
               <Input type="date" {...form.register('travelDates')} />
             </Field>
 
-            <Field label="Trip duration" error={form.formState.errors.tripDuration?.message}>
+            <Field label="Safar davomiyligi" error={form.formState.errors.tripDuration?.message}>
               <Input type="number" min={1} max={30} {...form.register('tripDuration', { valueAsNumber: true })} />
             </Field>
 
-            <Field label="Traveler count" error={form.formState.errors.travelerCount?.message}>
+            <Field label="Sayohatchilar soni" error={form.formState.errors.travelerCount?.message}>
               <Input type="number" min={1} max={12} {...form.register('travelerCount', { valueAsNumber: true })} />
             </Field>
 
-            <Field label="Traveler type" error={form.formState.errors.travelerLabelId?.message}>
+            <Field label="Sayohatchi turi" error={form.formState.errors.travelerLabelId?.message}>
               <select
                 className="h-11 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-sm text-white"
                 {...form.register('travelerLabelId')}
@@ -138,40 +138,40 @@ export function DiscoverForm() {
               </select>
             </Field>
 
-            <Field label="Budget style" error={form.formState.errors.budget?.message}>
+            <Field label="Byudjet uslubi" error={form.formState.errors.budget?.message}>
               <select
                 className="h-11 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-sm text-white"
                 {...form.register('budget')}
               >
-                <option value="budget">Budget-friendly</option>
-                <option value="balanced">Balanced</option>
+                <option value="budget">Tejamkor</option>
+                <option value="balanced">Balansli</option>
                 <option value="premium">Premium</option>
               </select>
             </Field>
 
-            <Field label="Accommodation preference" error={form.formState.errors.accommodationPreference?.message}>
-              <Input placeholder="Boutique hotel" {...form.register('accommodationPreference')} />
+            <Field label="Yashash turi" error={form.formState.errors.accommodationPreference?.message}>
+              <Input placeholder="Butik mehmonxona" {...form.register('accommodationPreference')} />
             </Field>
 
-            <Field label="Language preference" error={form.formState.errors.languagePreference?.message}>
-              <Input placeholder="English" {...form.register('languagePreference')} />
+            <Field label="Til afzalligi" error={form.formState.errors.languagePreference?.message}>
+              <Input placeholder="O'zbek / Ingliz" {...form.register('languagePreference')} />
             </Field>
 
-            <Field label="Trip pace" error={form.formState.errors.pace?.message}>
+            <Field label="Safar sur'ati" error={form.formState.errors.pace?.message}>
               <select
                 className="h-11 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 text-sm text-white"
                 {...form.register('pace')}
               >
-                <option value="relaxed">Relaxed</option>
-                <option value="balanced">Balanced</option>
-                <option value="fast">Fast-moving</option>
+                <option value="relaxed">Sokin</option>
+                <option value="balanced">Balansli</option>
+                <option value="fast">Tezkor</option>
               </select>
             </Field>
 
             <div className="sm:col-span-2">
               <div className="flex items-center justify-between">
-                <Label>Priorities</Label>
-                <span className="text-xs text-slate-500">Tap a priority to cycle through low, medium, and high emphasis.</span>
+                <Label>Ustuvorliklar</Label>
+                <span className="text-xs text-slate-500">Ustuvorlikni bosib, past, o'rta va yuqori darajani almashtiring.</span>
               </div>
               <div className="mt-3 flex flex-wrap gap-2">
                 {priorityOptions.map(([key, label]) => {
@@ -198,11 +198,11 @@ export function DiscoverForm() {
 
             <div className="sm:col-span-2 flex items-center gap-3 pt-2">
               <Button type="submit" disabled={pending || mutation.isPending} className="gap-2">
-                {pending || mutation.isPending ? 'Generating recommendations...' : 'Generate recommendations'}
+                {pending || mutation.isPending ? 'Tavsiyalar tayyorlanmoqda...' : 'Tavsiyalarni yaratish'}
                 <ArrowRight className="h-4 w-4" />
               </Button>
               <ButtonLink variant="secondary" href="/compare">
-                Open compare view
+                Taqqoslash sahifasini ochish
               </ButtonLink>
             </div>
           </form>
@@ -212,22 +212,22 @@ export function DiscoverForm() {
       <div className="space-y-5">
         <Card className="border-cyan-400/15 bg-slate-950/60">
           <CardHeader>
-            <CardTitle>Current city context</CardTitle>
+            <CardTitle>Tanlangan shahar konteksti</CardTitle>
             <CardDescription>{city.overview}</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 sm:grid-cols-2">
-            <InfoBlock label="Best time to visit" value={city.bestTimeToVisit} />
-            <InfoBlock label="Balanced budget" value={formatCurrency(city.averageDailyBudget.balanced)} />
+            <InfoBlock label="Eng yaxshi tashrif vaqti" value={city.bestTimeToVisit} />
+            <InfoBlock label="Balansli byudjet" value={formatCurrency(city.averageDailyBudget.balanced)} />
             <InfoBlock label="Transport" value={city.transportOverview} wide />
-            <InfoBlock label="Traveler types" value={city.travelerCategories.join(' · ')} wide />
+            <InfoBlock label="Sayohatchi turlari" value={city.travelerCategories.join(' · ')} wide />
           </CardContent>
         </Card>
 
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Recommendation output</CardTitle>
+            <CardTitle>Tavsiya natijalari</CardTitle>
             <CardDescription>
-              The top three neighborhoods will appear here with comfort score, budget estimate, strengths, and tradeoffs.
+              Eng yaxshi uch hudud bu yerda qulaylik bahosi, byudjet hisoboti, kuchli tomonlar va cheklovlar bilan ko'rinadi.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -238,12 +238,12 @@ export function DiscoverForm() {
                   <div key={item.neighborhoodSlug} className="rounded-3xl border border-white/10 bg-slate-950/60 p-5">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">Rank {index + 1}</div>
+                        <div className="text-sm uppercase tracking-[0.24em] text-cyan-300">O'rin {index + 1}</div>
                         <div className="mt-1 text-xl font-semibold text-white">{neighborhood?.name}</div>
                         <div className="mt-1 text-sm text-slate-400">{neighborhood?.summary}</div>
                       </div>
                       <div className="rounded-2xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-right">
-                        <div className="text-xs uppercase tracking-[0.24em] text-cyan-200">Comfort</div>
+                        <div className="text-xs uppercase tracking-[0.24em] text-cyan-200">Qulaylik</div>
                         <div className="text-2xl font-semibold text-white">{item.comfortScore}</div>
                       </div>
                     </div>
@@ -265,15 +265,15 @@ export function DiscoverForm() {
                       ))}
                     </div>
                     <div className="mt-4 flex items-center justify-between">
-                      <div className="text-sm text-slate-400">Estimated trip cost</div>
+                      <div className="text-sm text-slate-400">Taxminiy safar narxi</div>
                       <div className="text-sm font-medium text-white">{formatCurrency(item.priceEstimate)}</div>
                     </div>
                     <div className="mt-4 flex flex-wrap gap-2">
                       <ButtonLink href={`/neighborhoods/${item.neighborhoodSlug}`} variant="secondary">
-                        Open profile
+                        Profilni ochish
                       </ButtonLink>
                       <ButtonLink href={`/compare?ids=${selectedRecommendations.map((n) => n.neighborhoodSlug).join(',')}`} variant="ghost">
-                        Compare ranked options
+                        Reytinglangan variantlarni taqqoslash
                       </ButtonLink>
                     </div>
                   </div>
@@ -281,7 +281,7 @@ export function DiscoverForm() {
               })
             ) : (
               <div className="rounded-3xl border border-dashed border-white/10 bg-white/5 p-8 text-center text-sm text-slate-400">
-                Generate a recommendation to see the top three stay areas, explanations, and tradeoffs.
+                Eng yaxshi uch hudud, izohlar va farqlarni ko'rish uchun tavsiya yarating.
               </div>
             )}
           </CardContent>
@@ -300,7 +300,7 @@ async function fetchRecommendations(values: FormValues) {
     body: JSON.stringify(values)
   });
   if (!response.ok) {
-    throw new Error('Unable to generate recommendations');
+    throw new Error("Tavsiyalarni yaratib bo'lmadi");
   }
   return (await response.json()) as {
     recommendations: Array<{
@@ -340,3 +340,4 @@ function InfoBlock({ label, value, wide }: { label: string; value: string; wide?
     </div>
   );
 }
+

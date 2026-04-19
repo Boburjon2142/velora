@@ -22,8 +22,8 @@ const serif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-  title: 'Tourist Comfort Finder',
-  description: 'Choose the most convenient area to stay in a city with confidence.'
+  title: 'Velora',
+  description: 'Shahar ichida yashash uchun eng qulay hududni ishonch bilan tanlang.'
 };
 
 export default async function RootLayout({
@@ -34,7 +34,7 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+    <html lang="uz" className={`${sans.variable} ${serif.variable}`}>
       <body className="min-h-screen bg-slate-950 text-slate-100 antialiased">
         <Providers session={session}>
           <SiteHeader />

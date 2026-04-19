@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const city = seedState.cities.find((item) => item.slug === slug);
   return {
-    title: city ? `${city.name} | Tourist Comfort Finder` : 'City | Tourist Comfort Finder'
+    title: city ? `${city.name} | Velora` : 'Shahar | Velora'
   };
 }
 
@@ -41,29 +41,29 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid gap-4 sm:grid-cols-3">
-              <MetaStat label="Best time" value={city.bestTimeToVisit} />
-              <MetaStat label="Comfort profile" value={city.comfortSummary} />
-              <MetaStat label="Daily budget" value={`${formatCurrency(city.averageDailyBudget.balanced)} balanced`} />
+              <MetaStat label="Eng yaxshi vaqt" value={city.bestTimeToVisit} />
+              <MetaStat label="Qulaylik profili" value={city.comfortSummary} />
+              <MetaStat label="Kunlik byudjet" value={`${formatCurrency(city.averageDailyBudget.balanced)} balansli`} />
             </div>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href="/discover" className="gap-2">
-                Search neighborhoods <ArrowRight className="h-4 w-4" />
+                Hudud qidirish <ArrowRight className="h-4 w-4" />
               </ButtonLink>
               <ButtonLink href="/compare" variant="secondary">
-                Compare stay areas
+                Yashash hududlarini taqqoslash
               </ButtonLink>
             </div>
           </CardContent>
         </Card>
         <Card className="border-cyan-400/15 bg-slate-950/60">
           <CardHeader>
-            <CardTitle>Travel context</CardTitle>
+            <CardTitle>Safar konteksti</CardTitle>
             <CardDescription>{city.transportOverview}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <Context icon={MapPinned} title="Zones" text={city.zones.join(' · ')} />
-              <Context icon={TrainFront} title="Emergency access" text={city.emergencyAccess} />
+              <Context icon={TrainFront} title="Favqulodda yordam" text={city.emergencyAccess} />
             </div>
             <Context icon={UtensilsCrossed} title="Categories" text={city.travelerCategories.join(' · ')} />
           </CardContent>
@@ -72,9 +72,9 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
 
       <section className="mt-14">
         <SectionHeading
-          eyebrow="Recommended neighborhoods"
-          title="The main stay areas travelers should consider"
-          description="These are the neighborhoods that drive the city page recommendation logic and comparison views."
+          eyebrow="Tavsiya etilgan hududlar"
+          title="Sayohatchilar ko'rishi kerak bo'lgan asosiy yashash hududlari"
+          description="Bu hududlar shahar sahifasi tavsiya mantiqi va taqqoslash ko'rinishini belgilaydi."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {neighborhoods.map((neighborhood) => (
@@ -89,13 +89,13 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
               <CardContent className="space-y-4">
                 <p className="text-sm leading-6 text-slate-300">{neighborhood.summary}</p>
                 <div className="grid grid-cols-2 gap-3 text-sm">
-                  <Stat label="Safety" value={neighborhood.scores.safety} />
+                  <Stat label="Xavfsizlik" value={neighborhood.scores.safety} />
                   <Stat label="Transport" value={neighborhood.scores.transport} />
-                  <Stat label="Walkability" value={neighborhood.scores.walkability} />
+                  <Stat label="Piyoda qulaylik" value={neighborhood.scores.walkability} />
                   <Stat label="Tourism" value={neighborhood.scores.tourismProximity} />
                 </div>
                 <ButtonLink href={`/neighborhoods/${neighborhood.slug}`} variant="secondary" className="w-full">
-                  Open neighborhood
+                  Hududni ochish
                 </ButtonLink>
               </CardContent>
             </Card>
@@ -106,8 +106,8 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
       <section className="mt-14 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Featured attractions</CardTitle>
-            <CardDescription>The city’s main attractions shape itinerary planning and tourist proximity scores.</CardDescription>
+            <CardTitle>Tanlangan diqqatga sazovor joylar</CardTitle>
+            <CardDescription>Shaharning asosiy diqqat joylari marshrut va turizm yaqinligi bahosini belgilaydi.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3 sm:grid-cols-2">
             {seedState.attractions.filter((item) => item.citySlug === city.slug).map((attraction) => (
@@ -120,7 +120,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
         </Card>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>What travelers usually choose here</CardTitle>
+            <CardTitle>Bu yerda odatda tanlanadiganlar</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {city.travelerCategories.map((item) => (
@@ -128,7 +128,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
                 {item}
               </div>
             ))}
-            <div className="pt-2 text-xs uppercase tracking-[0.24em] text-slate-500">Live trust data</div>
+            <div className="pt-2 text-xs uppercase tracking-[0.24em] text-slate-500">Jonli ishonch ma'lumotlari</div>
             <div className="space-y-3">
               {testimonials.map((testimonial) => (
                 <div key={testimonial.id} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm leading-6 text-slate-300">

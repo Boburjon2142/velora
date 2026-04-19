@@ -6,9 +6,9 @@ export default function AdminPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Admin dashboard"
-        title="Manage cities, neighborhoods, scores, prices, and public trust content"
-        description="This panel is protected and designed for structured data maintenance rather than casual editing."
+        eyebrow="Admin panel"
+        title="Shaharlar, hududlar, baholar, narxlar va ishonch mazmunini boshqaring"
+        description="Bu panel himoyalangan va oddiy tahrirdan ko'ra tartibli ma'lumot yuritish uchun mo'ljallangan."
       />
       <div className="mt-10">
         <AdminDashboard />

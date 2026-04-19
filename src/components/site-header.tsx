@@ -12,21 +12,21 @@ export async function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-700 text-sm font-semibold text-white shadow-glow">
-            TCF
+            VL
           </span>
           <div>
             <div className="text-sm font-semibold tracking-[0.18em] text-cyan-200 uppercase">
-              Tourist Comfort Finder
+              Velora
             </div>
-            <div className="text-xs text-slate-400">Official travel comfort planning</div>
+            <div className="text-xs text-slate-400">Sayohat uchun qulaylikni rejalashtirish</div>
           </div>
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-slate-300 md:flex">
-          <Link href="/discover">Find stay areas</Link>
-          <Link href="/cities/tashkent">Cities</Link>
-          <Link href="/compare">Compare</Link>
-          <Link href="/budget">Budget</Link>
-          <Link href="/itinerary">Itinerary</Link>
+          <Link href="/discover">Hudud tanlash</Link>
+          <Link href="/cities/tashkent">Shaharlar</Link>
+          <Link href="/compare">Taqqoslash</Link>
+          <Link href="/budget">Byudjet</Link>
+          <Link href="/itinerary">Marshrut</Link>
           <Link href="/admin">Admin</Link>
         </nav>
         <div className="flex items-center gap-3">
@@ -37,12 +37,12 @@ export async function SiteHeader() {
                 <div className="text-xs text-slate-400 capitalize">{session.user?.role}</div>
               </div>
               <ButtonLink href="/api/auth/signout" variant="ghost" className="border border-white/10 bg-white/5">
-                Sign out
+                Chiqish
               </ButtonLink>
             </div>
           ) : (
             <ButtonLink href="/signin" className="bg-white text-slate-950 hover:bg-cyan-100">
-              Institutional access
+              Tizimga kirish
             </ButtonLink>
           )}
         </div>

@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
-  return { title: `${id} | Tourist Comfort Finder` };
+  return { title: `${id} | Velora` };
 }
 
 export default async function ItineraryDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -34,12 +34,12 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
             <Badge className="bg-white/5 text-slate-200">{itinerary.pace}</Badge>
           </div>
           <CardTitle className="mt-4 text-4xl">{itinerary.title}</CardTitle>
-          <CardDescription>{itinerary.days.length} days of practical routing, food stops, and time blocks.</CardDescription>
+          <CardDescription>{itinerary.days.length} kunlik amaliy yo'nalish, ovqat to'xtashlari va vaqt bo'limlari.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-5">
           {itinerary.days.map((day) => (
             <div key={day.day} className="rounded-3xl border border-white/10 bg-slate-950/60 p-5">
-              <div className="text-xs uppercase tracking-[0.24em] text-cyan-300">Day {day.day}</div>
+              <div className="text-xs uppercase tracking-[0.24em] text-cyan-300">Kun {day.day}</div>
               <div className="mt-2 text-lg font-semibold text-white">{day.theme}</div>
               <div className="mt-4 grid gap-3">
                 {day.items.map((item) => (
@@ -56,7 +56,7 @@ export default async function ItineraryDetailPage({ params }: { params: Promise<
             </div>
           ))}
           <ButtonLink href={`/neighborhoods/${itinerary.neighborhoodSlug}`} variant="secondary">
-            Open neighborhood profile
+            Hudud profilini ochish
           </ButtonLink>
         </CardContent>
       </Card>

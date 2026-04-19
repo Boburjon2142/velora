@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, MapPin, ShieldCheck, TramFront, UtensilsCrossed } from 'lucide-react';
+﻿import { ArrowRight, Building2, MapPin, ShieldCheck, TramFront, UtensilsCrossed } from 'lucide-react';
 
 import { seedState } from '@/features/data/seed';
 import { ButtonLink } from '@/components/ui/button';
@@ -9,10 +9,10 @@ import { SectionHeading } from '@/components/section-heading';
 import { Separator } from '@/components/ui/separator';
 
 const highlights = [
-  { icon: ShieldCheck, title: 'Comfort scoring with clear tradeoffs', text: 'Transparent logic that explains why an area fits a traveler profile.' },
-  { icon: TramFront, title: 'Transport-first neighborhood selection', text: 'Choose areas with realistic transit, airport, and walkability context.' },
-  { icon: UtensilsCrossed, title: 'Food and practical services', text: 'See halal food, pharmacies, ATMs, and daily convenience in one place.' },
-  { icon: MapPin, title: 'Neighborhood-level map clarity', text: 'Explore stay zones with responsive map filters and useful markers.' }
+  { icon: ShieldCheck, title: 'Aniq baholash va ochiq izohlar', text: 'Hudud nima uchun mos kelishini tushuntiradigan shaffof mantiq.' },
+  { icon: TramFront, title: 'Transportga tayangan tanlov', text: 'Realistik transport, aeroport va piyoda yurish qulayligi bilan hududlarni tanlang.' },
+  { icon: UtensilsCrossed, title: 'Ovqat va amaliy xizmatlar', text: "Halol ovqat, dorixona, bankomat va kundalik qulayliklarni bir joyda ko'ring." },
+  { icon: MapPin, title: 'Hudud xaritasida aniqlik', text: "Moslashuvchan filtrlar va foydali belgilar bilan stay zonalarni o'rganing." }
 ];
 
 export default function HomePage() {
@@ -27,27 +27,27 @@ export default function HomePage() {
         <PageShell className="relative py-16 sm:py-20 lg:py-28">
           <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
             <div className="max-w-3xl">
-              <Badge className="border-cyan-300/20 bg-cyan-300/10 text-cyan-100">Official travel comfort planning</Badge>
+              <Badge className="border-cyan-300/20 bg-cyan-300/10 text-cyan-100">Rasmiy sayohat qulayligi rejalashtiruvchisi</Badge>
               <h1 className="mt-5 text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-7xl">
-                Find the most comfortable area to stay in every city.
+                Har bir shaharda qolish uchun eng qulay hududni toping.
               </h1>
               <p className="mt-6 max-w-2xl text-base leading-8 text-slate-200 sm:text-lg">
-                Tourist Comfort Finder helps visitors choose stay areas based on safety, transport, food,
-                budget fit, cultural access, and the kind of trip they actually want to take.
+                Velora sayyohlarga xavfsizlik, transport, ovqat, byudjet, madaniy yaqinlik va safar maqsadiga mos holda
+                yashash hududini tanlashga yordam beradi.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <ButtonLink href="/discover" className="gap-2">
-                  Start a city search <ArrowRight className="h-4 w-4" />
+                  Shaharni tanlash <ArrowRight className="h-4 w-4" />
                 </ButtonLink>
                 <ButtonLink href="/compare" variant="secondary">
-                  Compare neighborhoods
+                  Hududlarni taqqoslash
                 </ButtonLink>
               </div>
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
                 {[
-                  ['4 seeded cities', 'Credible data for Uzbekistan’s core tourism cities'],
-                  ['16 neighborhoods', 'Enough density for comparisons and ranked recommendations'],
-                  ['Live saving', 'Favorites, itineraries, and search history for signed-in users']
+                  ['4 ta shahar', "O'zbekistonning asosiy turizm shaharlariga doir ishonchli ma'lumotlar"],
+                  ['16 ta hudud', "Taqqoslash va tavsiyalar uchun yetarli zichlikdagi ma'lumotlar"],
+                  ['Saqlash', "Sevimlilar, marshrutlar va qidiruv tarixi tizimga kirgan foydalanuvchilar uchun"]
                 ].map(([title, text]) => (
                   <Card key={title} className="border-white/10 bg-white/5">
                     <CardContent className="p-5">
@@ -61,10 +61,10 @@ export default function HomePage() {
 
             <Card className="border-cyan-400/15 bg-slate-950/60 shadow-glow">
               <CardHeader>
-                <CardTitle>Fastest route to a confident stay choice</CardTitle>
+                <CardTitle>Qulay joy tanlashning eng tez yo'li</CardTitle>
                 <CardDescription>
-                  Tell us the city, traveler profile, and priorities. The platform ranks the best areas and explains
-                  the tradeoffs with transparent logic.
+                  Shahar, sayohatchi turi va ustuvorliklarni kiriting. Platforma eng yaxshi hududlarni tartiblab,
+                  afzallik va cheklovlarni tushunarli tarzda ko'rsatadi.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -86,20 +86,20 @@ export default function HomePage() {
 
       <PageShell className="py-16">
         <SectionHeading
-          eyebrow="How it works"
-          title="A structured journey from search to stay decision"
-          description="The platform turns traveler priorities into ranked neighborhood recommendations, budget insights, maps, and itineraries."
+          eyebrow="Qanday ishlaydi"
+          title="Qidiruvdan yashash hududi tanlovigacha tartibli jarayon"
+          description="Platforma sayohatchi ustuvorliklarini reytinglangan hududlar, byudjet hisoblari, xaritalar va marshrutlarga aylantiradi."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-4">
           {[
-            ['1', 'Share trip details', 'Choose city, dates, budget level, pace, and traveler priorities.'],
-            ['2', 'Rank neighborhoods', 'The engine scores stay areas against a transparent comfort model.'],
-            ['3', 'Inspect tradeoffs', 'See why one area is better for your trip than another.'],
-            ['4', 'Save and plan', 'Build favorites, itineraries, and comparisons with one account.']
+            ['1', "Safar ma'lumotlarini kiriting", "Shahar, sana, byudjet darajasi, sur'at va ustuvorliklarni tanlang."],
+            ['2', 'Hududlarni reytinglash', 'Dvigatel qulaylik modeliga tayangan holda hududlarni baholaydi.'],
+            ['3', "Farqlarni ko'ring", "Nega bir hudud boshqasidan mosroq ekanini tushunib oling."],
+            ['4', 'Saqlang va rejalashtiring', 'Bitta akkauntda sevimlilar, marshrutlar va taqqoslashlarni yarating.']
           ].map(([step, title, text]) => (
             <Card key={title} className="border-white/10 bg-white/5">
               <CardContent className="p-6">
-                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">Step {step}</div>
+                <div className="text-xs font-semibold uppercase tracking-[0.3em] text-cyan-300">Bosqich {step}</div>
                 <div className="mt-3 text-lg font-semibold text-white">{title}</div>
                 <p className="mt-2 text-sm leading-6 text-slate-400">{text}</p>
               </CardContent>
@@ -111,9 +111,9 @@ export default function HomePage() {
       <section className="border-y border-white/10 bg-slate-950/70">
         <PageShell className="py-16">
           <SectionHeading
-            eyebrow="Featured cities"
-            title="A credible starting network for live demonstrations"
-            description="Each city page includes zones, budget ranges, transport notes, and traveler-specific guidance."
+            eyebrow="Tanlangan shaharlar"
+            title="Jonli taqdimot uchun ishonchli boshlang'ich tarmoq"
+            description="Har bir shahar sahifasida hududlar, byudjet oraliqlari, transport izohlari va sayohatchi bo'yicha yo'nalishlar bor."
           />
           <div className="mt-8 grid gap-5 lg:grid-cols-4">
             {featuredCities.map((city) => (
@@ -134,11 +134,11 @@ export default function HomePage() {
                   <div className="space-y-4 p-5">
                     <p className="text-sm leading-6 text-slate-400">{city.overview}</p>
                     <div className="flex items-center justify-between">
-                      <div className="text-xs uppercase tracking-[0.25em] text-slate-500">Daily budget</div>
-                      <div className="text-sm text-white">{city.averageDailyBudget.balanced}/day balanced</div>
+                      <div className="text-xs uppercase tracking-[0.25em] text-slate-500">Kunlik byudjet</div>
+                      <div className="text-sm text-white">{city.averageDailyBudget.balanced}/kun balansli</div>
                     </div>
                     <ButtonLink href={`/cities/${city.slug}`} variant="secondary" className="w-full">
-                      Open city profile
+                      Shahar profilini ochish
                     </ButtonLink>
                   </div>
                 </CardContent>
@@ -150,9 +150,9 @@ export default function HomePage() {
 
       <PageShell className="py-16">
         <SectionHeading
-          eyebrow="Featured neighborhoods"
-          title="Practical stay areas with different comfort profiles"
-          description="These neighborhoods are seeded with enough detail for ranking, comparison, maps, and itinerary planning."
+          eyebrow="Tanlangan hududlar"
+          title="Turli qulaylik profillariga ega amaliy yashash hududlari"
+          description="Bu hududlar reyting, taqqoslash, xarita va marshrut rejalash uchun yetarlicha batafsil ma'lumotga ega."
         />
         <div className="mt-8 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {featuredNeighborhoods.map((neighborhood) => {
@@ -178,11 +178,11 @@ export default function HomePage() {
                     ))}
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-slate-400">Comfort score baseline</span>
-                    <span className="font-medium text-cyan-200">{neighborhood.scores.safety + neighborhood.scores.transport > 170 ? 'High' : 'Strong'}</span>
+                    <span className="text-slate-400">Qulaylik darajasi</span>
+                    <span className="font-medium text-cyan-200">{neighborhood.scores.safety + neighborhood.scores.transport > 170 ? 'Yuqori' : 'Kuchli'}</span>
                   </div>
                   <ButtonLink href={`/neighborhoods/${neighborhood.slug}`} variant="secondary" className="w-full">
-                    View neighborhood
+                    Hududni ko'rish
                   </ButtonLink>
                 </CardContent>
               </Card>
@@ -194,25 +194,25 @@ export default function HomePage() {
       <section className="border-y border-white/10 bg-slate-950/70">
         <PageShell className="py-16">
           <SectionHeading
-            eyebrow="Comfort scoring"
-            title="Transparent metrics, not black-box travel advice"
-            description="The recommendation model combines traveler priorities with neighborhood-level signals and shows the tradeoffs alongside the ranking."
+            eyebrow="Qulaylik bahosi"
+            title="Qora quti emas, ochiq ko'rsatkichlar"
+            description="Tavsiyalar modeli sayohatchi ustuvorliklari va hudud signallarini birlashtirib, reyting bilan birga farqlarni ham ko'rsatadi."
           />
           <div className="mt-8 grid gap-5 lg:grid-cols-2">
             <Card className="border-white/10 bg-white/5">
               <CardHeader>
-                <CardTitle>What the score includes</CardTitle>
+                <CardTitle>Baho nimalarni o'z ichiga oladi</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:grid-cols-2">
                 {[
-                  'Safety',
+                  'Xavfsizlik',
                   'Transport',
-                  'Walkability',
-                  'Food access',
-                  'Tourism proximity',
-                  'Budget fit',
-                  'Family friendliness',
-                  'Quietness'
+                  'Piyoda qulaylik',
+                  'Ovqat topish',
+                  'Turizm yaqinligi',
+                  'Byudjetga moslik',
+                  'Oila uchun qulaylik',
+                  'Sokinlik'
                 ].map((item) => (
                   <div key={item} className="rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-slate-200">
                     {item}
@@ -222,14 +222,14 @@ export default function HomePage() {
             </Card>
             <Card className="border-white/10 bg-white/5">
               <CardHeader>
-                <CardTitle>Why institutions can trust it</CardTitle>
+                <CardTitle>Nega ishonchli</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 text-sm leading-6 text-slate-300">
-                <p>It is structured, explainable, and easy to inspect in a live presentation.</p>
+                <p>U tartibli, tushunarli va jonli taqdimotda oson tekshiriladi.</p>
                 <Separator />
-                <p>Each recommendation explains strengths and tradeoffs instead of overselling a single neighborhood.</p>
+                <p>Har bir tavsiya faqat maqtamaydi, balki kuchli va zaif tomonlarni ham ko'rsatadi.</p>
                 <Separator />
-                <p>Budget, itinerary, compare, and map experiences all point to the same underlying city data.</p>
+                <p>Byudjet, marshrut, taqqoslash va xarita bir xil shahar ma'lumotlariga tayangan.</p>
               </CardContent>
             </Card>
           </div>
@@ -237,7 +237,7 @@ export default function HomePage() {
       </section>
 
       <PageShell className="py-16">
-        <SectionHeading eyebrow="Testimonials" title="Designed for confident trip planning" />
+        <SectionHeading eyebrow="Fikrlar" title="Ishonchli safar rejalash uchun" />
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {seedState.testimonials.map((testimonial) => (
             <Card key={testimonial.id} className="border-white/10 bg-white/5">
@@ -247,9 +247,9 @@ export default function HomePage() {
                     <div className="font-medium text-white">{testimonial.name}</div>
                     <div className="text-xs uppercase tracking-[0.24em] text-slate-500">{testimonial.title}</div>
                   </div>
-                  <div className="text-sm text-cyan-200">{'★'.repeat(testimonial.rating)}</div>
+                  <div className="text-sm text-cyan-200">{'в…'.repeat(testimonial.rating)}</div>
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-300">“{testimonial.quote}”</p>
+                <p className="mt-4 text-sm leading-6 text-slate-300">вЂњ{testimonial.quote}вЂќ</p>
               </CardContent>
             </Card>
           ))}
@@ -257,13 +257,13 @@ export default function HomePage() {
       </PageShell>
 
       <PageShell className="pb-20">
-        <SectionHeading eyebrow="FAQ" title="Practical answers for first-time users" />
+        <SectionHeading eyebrow="FAQ" title="Birinchi marta foydalanuvchilar uchun javoblar" />
         <div className="mt-8 grid gap-5 lg:grid-cols-2">
           {[
-            ['Can I compare neighborhoods side by side?', 'Yes. The compare view shows score, budget, transport, food, and family fit together.'],
-            ['Does saving require sign-in?', 'Yes. Saved neighborhoods, itineraries, and search history are tied to the user account.'],
-            ['Is the map interactive?', 'Yes. The neighborhood pages include a filterable map with useful nearby points.'],
-            ['Can the admin panel edit content?', 'Yes. Authorized admin users can adjust city, neighborhood, score, price, and label data.']
+            ["Hududlarni yonma-yon taqqoslash mumkinmi?", "Ha. Taqqoslash sahifasi baho, byudjet, transport, ovqat va oila mosligini birga ko'rsatadi."],
+            ["Saqlash uchun kirish kerakmi?", "Ha. Saqlangan hududlar, marshrutlar va qidiruv tarixi foydalanuvchi akkauntiga bog'lanadi."],
+            ["Xarita interaktivmi?", "Ha. Hudud sahifalarida filtrlash mumkin bo'lgan xarita mavjud."],
+            ["Admin panel ma'lumotlarni tahrirlay oladimi?", "Ha. Ruxsatli adminlar shahar, hudud, baho, narx va yorliqlarni o'zgartira oladi."]
           ].map(([question, answer]) => (
             <Card key={question} className="border-white/10 bg-white/5">
               <CardHeader>
@@ -283,7 +283,7 @@ export default function HomePage() {
 function highlightSummary(cityA: (typeof seedState.cities)[number], cityB: (typeof seedState.cities)[number], cityC: (typeof seedState.cities)[number]) {
   return (
     <div className="rounded-3xl border border-white/10 bg-white/5 p-5">
-      <div className="text-sm font-medium text-white">Seeded city network</div>
+      <div className="text-sm font-medium text-white">Tayyorlangan shahar tarmog'i</div>
       <div className="mt-3 space-y-3 text-sm text-slate-400">
         <div className="flex items-center justify-between">
           <span>{cityA.name}</span>
@@ -301,3 +301,4 @@ function highlightSummary(cityA: (typeof seedState.cities)[number], cityB: (type
     </div>
   );
 }
+

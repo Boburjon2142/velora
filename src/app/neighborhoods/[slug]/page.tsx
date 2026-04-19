@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const neighborhood = seedState.neighborhoods.find((item) => item.slug === slug);
   return {
-    title: neighborhood ? `${neighborhood.name} | Tourist Comfort Finder` : 'Neighborhood | Tourist Comfort Finder'
+    title: neighborhood ? `${neighborhood.name} | Velora` : 'Hudud | Velora'
   };
 }
 
@@ -56,31 +56,31 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
             <div className="flex flex-wrap gap-3">
               <SaveNeighborhoodButton slug={neighborhood.slug} />
               <ButtonLink href={`/compare?ids=${neighborhood.slug}`} variant="secondary">
-                Compare this area
+                Ushbu hududni taqqoslash
               </ButtonLink>
               <ButtonLink href="/itinerary" variant="ghost">
-                Build itinerary
+                Marshrut yaratish
               </ButtonLink>
             </div>
           </CardContent>
         </Card>
         <Card className="border-cyan-400/15 bg-slate-950/60">
           <CardHeader>
-            <CardTitle>Score breakdown</CardTitle>
+            <CardTitle>Baho taqsimoti</CardTitle>
             <CardDescription>
-              Strong {neighborhood.bestFor[0]?.toLowerCase()} fit, with tradeoffs clearly shown for the selected stay zone.
+              Kuchli {neighborhood.bestFor[0]?.toLowerCase()} mosligi, tanlangan hudud uchun farqlar bilan birga ko'rsatiladi.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-3">
             {[
-              ['Safety', neighborhood.scores.safety],
+              ['Xavfsizlik', neighborhood.scores.safety],
               ['Transport', neighborhood.scores.transport],
-              ['Walkability', neighborhood.scores.walkability],
-              ['Food access', neighborhood.scores.foodAccess],
-              ['Tourism proximity', neighborhood.scores.tourismProximity],
-              ['Budget fit', neighborhood.scores.budgetFit],
+              ['Piyoda qulaylik', neighborhood.scores.walkability],
+              ['Ovqat', neighborhood.scores.foodAccess],
+              ['Turizm yaqinligi', neighborhood.scores.tourismProximity],
+              ['Byudjet mosligi', neighborhood.scores.budgetFit],
               ['Internet', neighborhood.scores.workInternet],
-              ['Emergency access', neighborhood.scores.emergencyAccess]
+              ['Favqulodda yordam', neighborhood.scores.emergencyAccess]
             ].map(([label, value]) => (
               <ScoreRow key={label} label={label as string} value={Number(value)} />
             ))}
@@ -91,7 +91,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
       <section className="mt-14 grid gap-5 lg:grid-cols-3">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Best for</CardTitle>
+            <CardTitle>Eng mos</CardTitle>
           </CardHeader>
           <CardContent className="flex flex-wrap gap-2">
             {neighborhood.bestFor.map((item) => (
@@ -103,7 +103,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </Card>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Advantages</CardTitle>
+            <CardTitle>Afzalliklar</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3 text-sm leading-6 text-slate-300">
             <p>{neighborhood.foodNotes}</p>
@@ -113,7 +113,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </Card>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Tradeoffs</CardTitle>
+            <CardTitle>Cheklovlar</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 text-sm leading-6 text-slate-300">
             {neighborhood.tradeoffs.map((item) => (
@@ -128,8 +128,8 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
       <section className="mt-14 grid gap-5 lg:grid-cols-[1fr_1fr]">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Nearby services</CardTitle>
-            <CardDescription>Pharmacies, hospitals, ATMs, supermarkets, and coworking points that support real travel planning.</CardDescription>
+            <CardTitle>Yaqin xizmatlar</CardTitle>
+            <CardDescription>Dorixonalar, shifoxonalar, bankomatlar, supermarketlar va coworking nuqtalari.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3 sm:grid-cols-2">
             {nearbyAmenities.map((item) => (
@@ -143,8 +143,8 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </Card>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Nearby attractions</CardTitle>
-            <CardDescription>Useful for route planning, day selection, and traveler fit.</CardDescription>
+            <CardTitle>Yaqin diqqat joylari</CardTitle>
+            <CardDescription>Marshrut, kun tanlovi va sayohatchi mosligini rejalashda foydali.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-3 sm:grid-cols-2">
             {nearbyAttractions.map((item) => (
@@ -161,8 +161,8 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
       <section className="mt-14">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Map and nearby radius</CardTitle>
-            <CardDescription>Filter the places that matter most and inspect proximity around the selected stay zone.</CardDescription>
+            <CardTitle>Xarita va yaqin doira</CardTitle>
+            <CardDescription>Eng muhim joylarni filtrlang va tanlangan hudud atrofidagi yaqinlikni ko'ring.</CardDescription>
           </CardHeader>
           <CardContent>
             <NeighborhoodMap neighborhood={neighborhood} amenities={nearbyAmenities} attractions={nearbyAttractions} />
@@ -173,7 +173,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
       <section className="mt-14 grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Sample daily budget</CardTitle>
+            <CardTitle>Namuna kunlik byudjet</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <BudgetRow label="Stay" value={priceProfile.nightlyStay.balanced} />
@@ -195,7 +195,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
         </Card>
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Travel notes and itinerary cues</CardTitle>
+            <CardTitle>Safar izohlari va marshrut ko'rsatmalari</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid gap-3 sm:grid-cols-2">
@@ -209,7 +209,7 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
             </div>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href={`/itinerary?city=${neighborhood.citySlug}&neighborhood=${neighborhood.slug}`} className="gap-2">
-                Build a plan <ArrowRight className="h-4 w-4" />
+                Reja tuzish <ArrowRight className="h-4 w-4" />
               </ButtonLink>
             </div>
           </CardContent>
@@ -219,8 +219,8 @@ export default async function NeighborhoodPage({ params }: { params: Promise<{ s
       <section className="mt-14">
         <Card className="border-white/10 bg-white/5">
           <CardHeader>
-            <CardTitle>Traveler sentiment</CardTitle>
-            <CardDescription>Seeded testimonials that reinforce how the neighborhood feels in real use.</CardDescription>
+            <CardTitle>Sayohatchi fikrlari</CardTitle>
+            <CardDescription>Hududning amalda qanday tuyulishini ko'rsatadigan tayyor fikrlar.</CardDescription>
           </CardHeader>
           <CardContent className="grid gap-4 md:grid-cols-3">
             {testimonials.map((testimonial) => (

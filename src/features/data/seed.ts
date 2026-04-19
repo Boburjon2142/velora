@@ -1,4 +1,4 @@
-import type {
+﻿import type {
   Amenity,
   AppState,
   Attraction,
@@ -37,14 +37,14 @@ const cities: City[] = [
     country: 'Uzbekistan',
     region: 'Capital Region',
     overview:
-      'Uzbekistan’s capital combines broad boulevards, strong transport access, modern hotels, and a reliable service network. It is the most practical base for first-time visitors who want comfort and structure.',
+      'UzbekistanвЂ™s capital combines broad boulevards, strong transport access, modern hotels, and a reliable service network. It is the most practical base for first-time visitors who want comfort and structure.',
     heroTagline: 'Urban comfort, dependable transport, and the widest service network in the country.',
     bestTimeToVisit: 'March to May, and late September to early November',
     averageDailyBudget: { budget: 42, balanced: 82, premium: 170 },
     transportOverview:
-      'Metro lines, ride-hailing, and wide arterial roads make Tashkent the most transport-comfortable city in the seed set.',
+      "Metro liniyalari, taksi ilovalari va keng asosiy yo'llar Toshkentni eng qulay transportli shahar qiladi.",
     comfortSummary:
-      'Best overall for travelers who want balanced convenience, predictable transit, and good airport access.',
+      'Balansli qulaylik, oldindan taxmin qilinadigan transport va yaxshi aeroport yaqinligini xohlaydiganlar uchun eng yaxshi tanlov.',
     travelerCategories: ['Business travelers', 'Families', 'First-time visitors', 'Remote workers'],
     zones: ['City Center', 'Mirabad', 'Yunusabad', 'Chilonzor', 'Tashkent South'],
     highlights: ['Strong metro coverage', 'Best airport access', 'Great for meetings and mixed-purpose trips'],
@@ -58,14 +58,14 @@ const cities: City[] = [
     country: 'Uzbekistan',
     region: 'Sogdiana Corridor',
     overview:
-      'Samarkand is ideal for culture-led trips, with an elegant historic core, practical guesthouse clusters, and a compact layout that suits leisurely sightseeing.',
+      "Samarqand madaniyatga yo'naltirilgan safarlar uchun juda mos, nafis tarixiy markaz, amaliy mehmon uylari va bemalol sayrga qulay ixcham tuzilishga ega.",
     heroTagline: 'Historic depth with an easy sightseeing rhythm.',
     bestTimeToVisit: 'April to June, and September to October',
     averageDailyBudget: { budget: 34, balanced: 68, premium: 145 },
     transportOverview:
-      'Taxis and short rides are the norm; the center is compact and walkable around the key heritage districts.',
+      "Taksi va qisqa yurishlar odatiy; markaz ixcham bo'lib, asosiy tarixiy hududlarda piyoda yurish qulay.",
     comfortSummary:
-      'Best for travelers prioritizing cultural proximity, easy walking, and a slower pace.',
+      "Madaniy yaqinlik, oson piyoda yurish va sokinroq sur'atni afzal ko'radiganlar uchun eng yaxshi.",
     travelerCategories: ['Cultural tourists', 'Couples', 'Small groups', 'Family city-breaks'],
     zones: ['Registan Quarter', 'Siab Bazaar', 'University District', 'Amir Temur Avenue'],
     highlights: ['World-class monuments', 'Compact center', 'Strong food and guesthouse options'],
@@ -79,14 +79,14 @@ const cities: City[] = [
     country: 'Uzbekistan',
     region: 'Historic Oasis Belt',
     overview:
-      'Bukhara offers one of the most atmospheric old towns in Central Asia, with calm streets, heritage hotels, and a highly legible visitor experience.',
+      "Buxoro Markaziy Osiyodagi eng muhitli qadimiy shaharlaridan birini taklif etadi: sokin ko'chalar, meros mehmonxonalari va juda tushunarli sayohat tajribasi.",
     heroTagline: 'Quiet heritage stays and a refined old-city atmosphere.',
     bestTimeToVisit: 'March to May, and September to November',
     averageDailyBudget: { budget: 30, balanced: 61, premium: 132 },
     transportOverview:
-      'The old town is best explored on foot, while taxis connect the station, newer districts, and outer attractions.',
+      "Qadimiy shaharni piyoda ko'rish eng yaxshi, taksilar esa vokzal, yangi tumanlar va tashqi diqqat joylarini bog'laydi.",
     comfortSummary:
-      'Excellent for travelers who value peace, historical immersion, and compact planning.',
+      "Tinchlik, tarixga sho'ng'ish va ixcham rejalashni qadrlaydigan sayohatchilar uchun juda yaxshi.",
     travelerCategories: ['Heritage travelers', 'Quiet travelers', 'Luxury leisure', 'Photo-focused travelers'],
     zones: ['Lyabi-Hauz', 'Po-i-Kalyan', 'Old City South', 'Kogon Gateway'],
     highlights: ['Quiet evenings', 'Excellent old-city atmosphere', 'Good halal food availability'],
@@ -100,14 +100,14 @@ const cities: City[] = [
     country: 'Uzbekistan',
     region: 'Khorezm Heritage Ring',
     overview:
-      'Khiva is a tightly preserved heritage city where the main concern is balancing immersive history with practical access, especially after dark.',
+      "Xiva ehtiyotkorlik bilan saqlangan meros shahri bo'lib, asosiy masala tarixiy muhit va amaliy qulaylikni, ayniqsa kechqurun, muvozanatlashdir.",
     heroTagline: 'Immersive, intimate, and carefully planned.',
     bestTimeToVisit: 'April to June, and September to early November',
     averageDailyBudget: { budget: 28, balanced: 56, premium: 118 },
     transportOverview:
-      'The walkable old city is the core experience; transport matters mainly for arrival, departure, and outer-day trips.',
+      "Piyoda yuriladigan eski shahar asosiy tajriba; transport asosan kelish, ketish va tashqi kunlik safarlar uchun muhim.",
     comfortSummary:
-      'Best for heritage-focused travelers who accept a slower, more intimate city structure.',
+      "Tarixiy muhitga yo'naltirilgan, sekinroq va samimiyroq shahar tuzilmasini qabul qiladiganlar uchun eng yaxshi.",
     travelerCategories: ['History enthusiasts', 'Slow travelers', 'Couples', 'Photographers'],
     zones: ['Ichan Kala Edge', 'Dishan Kala', 'Pakhlavan Makhmud District', 'Riverside Quarter'],
     highlights: ['Deep heritage immersion', 'Very walkable old town', 'Strong cultural character'],
@@ -1104,7 +1104,7 @@ const attractionTuples: Array<Omit<Attraction, 'id'>> = [
     neighborhoodSlug: 'samarkand-registan-quarter',
     name: 'Registan Square',
     category: 'historic',
-    description: 'The city’s most iconic monument ensemble.',
+    description: 'The cityвЂ™s most iconic monument ensemble.',
     latitude: 39.6541,
     longitude: 66.9752,
     address: 'Registan, Samarkand',
@@ -1246,3 +1246,4 @@ export const seedMeta = {
   amenities: amenities.length,
   attractions: attractions.length
 };
+

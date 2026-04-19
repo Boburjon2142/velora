@@ -6,9 +6,9 @@ export default function BudgetPage() {
   return (
     <PageShell className="py-14">
       <SectionHeading
-        eyebrow="Budget estimator"
-        title="Estimate a realistic travel budget"
-        description="Use budget-friendly, balanced, and premium views to understand what a trip can cost in each stay zone."
+        eyebrow="Byudjet hisoblagichi"
+        title="Realistik safar byudjetini hisoblang"
+        description="Har bir yashash hududida safar qancha turishini ko'rish uchun tejamkor, balansli va premium ko'rinishlardan foydalaning."
       />
       <div className="mt-10">
         <BudgetPlanner />

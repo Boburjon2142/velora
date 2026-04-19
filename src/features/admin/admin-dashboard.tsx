@@ -342,7 +342,7 @@ function CityEditor({
       <Field label="Overview">
         <Textarea value={overview} onChange={(event) => setOverview(event.target.value)} />
       </Field>
-      <Field label="Best time to visit">
+      <Field label="Eng yaxshi tashrif vaqti">
         <Input value={bestTimeToVisit} onChange={(event) => setBestTimeToVisit(event.target.value)} />
       </Field>
       <Button type="submit" disabled={pending}>
