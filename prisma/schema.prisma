@@ -1,0 +1,334 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TravelerRole {
+  traveler
+  admin
+}
+
+enum BudgetBand {
+  budget
+  balanced
+  premium
+}
+
+enum AmenityCategory {
+  accommodation
+  cafe
+  restaurant
+  halalFood
+  attraction
+  pharmacy
+  hospital
+  supermarket
+  atm
+  transport
+  coworking
+  park
+  mosque
+  culturalSite
+}
+
+enum ItineraryPace {
+  relaxed
+  balanced
+  fast
+}
+
+model User {
+  id              String                    @id @default(cuid())
+  email           String                    @unique
+  name            String
+  role            TravelerRole              @default(traveler)
+  passwordHash    String?
+  cityId          String?
+  city            City?                     @relation(fields: [cityId], references: [id], onDelete: SetNull)
+  preferenceProfile TravelerPreferenceProfile?
+  savedNeighborhoods SavedNeighborhood[]
+  savedPlans      SavedPlan[]
+  searchHistory    SearchHistory[]
+  itineraries      Itinerary[]
+  reviews          Review[]
+  adminActivityLog  AdminActivityLog[]
+  createdAt        DateTime                 @default(now())
+  updatedAt        DateTime                 @updatedAt
+
+  @@index([role])
+}
+
+model City {
+  id                String           @id @default(cuid())
+  slug              String           @unique
+  name              String
+  country           String
+  region            String
+  overview          String           @db.Text
+  heroTagline       String
+  bestTimeToVisit   String
+  transportOverview String           @db.Text
+  comfortSummary    String           @db.Text
+  emergencyAccess   String           @db.Text
+  latitude          Float
+  longitude         Float
+  neighborhoods     Neighborhood[]
+  amenities         Amenity[]
+  attractions       Attraction[]
+  priceProfiles     PriceProfile[]
+  testimonials      Review[]
+  searchHistory     SearchHistory[]
+  itineraries       Itinerary[]
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@index([country])
+}
+
+model Neighborhood {
+  id                  String            @id @default(cuid())
+  cityId              String
+  city                City              @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  slug                String            @unique
+  name                String
+  tagline             String
+  summary             String            @db.Text
+  vibe                String
+  priceBand           BudgetBand
+  bestFor             Json
+  tradeoffs           Json
+  nearbyLandmarks     Json
+  transitNotes        String            @db.Text
+  foodNotes           String            @db.Text
+  safetyNotes         String            @db.Text
+  internetNotes       String            @db.Text
+  latitude            Float
+  longitude           Float
+  dailyBudgetBudget   Int
+  dailyBudgetBalanced  Int
+  dailyBudgetPremium   Int
+  scores              NeighborhoodScore?
+  amenities           Amenity[]
+  attractions         Attraction[]
+  savedNeighborhoods  SavedNeighborhood[]
+  itineraries         Itinerary[]
+  createdAt           DateTime          @default(now())
+  updatedAt           DateTime          @updatedAt
+
+  @@index([cityId])
+  @@index([priceBand])
+}
+
+model NeighborhoodScore {
+  id                 String       @id @default(cuid())
+  neighborhoodId     String       @unique
+  neighborhood       Neighborhood @relation(fields: [neighborhoodId], references: [id], onDelete: Cascade)
+  safety             Int
+  transport          Int
+  walkability        Int
+  foodAccess         Int
+  tourismProximity   Int
+  budgetFit          Int
+  familyFriendliness  Int
+  quietness          Int
+  workInternet       Int
+  nightlife          Int
+  emergencyAccess    Int
+  greenAreas         Int
+  airportAccess      Int
+  halalFood          Int
+  coworkingAccess    Int
+  shopping           Int
+  culturalAccess     Int
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime     @updatedAt
+}
+
+model Amenity {
+  id               String           @id @default(cuid())
+  cityId           String
+  city             City             @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  neighborhoodId   String
+  neighborhood     Neighborhood     @relation(fields: [neighborhoodId], references: [id], onDelete: Cascade)
+  name             String
+  category         AmenityCategory
+  description      String           @db.Text
+  latitude         Float
+  longitude        Float
+  radiusMeters     Int
+  address          String
+  openHours        String
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([cityId, neighborhoodId])
+  @@index([category])
+}
+
+model Attraction {
+  id             String       @id @default(cuid())
+  cityId        String
+  city          City         @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  neighborhoodId String
+  neighborhood  Neighborhood @relation(fields: [neighborhoodId], references: [id], onDelete: Cascade)
+  name           String
+  category       String
+  description    String       @db.Text
+  latitude       Float
+  longitude      Float
+  address        String
+  ticketHint     String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@index([cityId, neighborhoodId])
+}
+
+model PriceProfile {
+  id                   String   @id @default(cuid())
+  cityId               String   @unique
+  city                 City     @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  nightlyBudget        Int
+  nightlyBalanced      Int
+  nightlyPremium       Int
+  foodBudget           Int
+  foodBalanced         Int
+  foodPremium          Int
+  transportBudget      Int
+  transportBalanced    Int
+  transportPremium     Int
+  activityBudget       Int
+  activityBalanced     Int
+  activityPremium      Int
+  emergencyBufferPercent Int
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}
+
+model TravelerPreferenceProfile {
+  id               String       @id @default(cuid())
+  userId           String?      @unique
+  user             User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  budgetBand       BudgetBand
+  accommodation    String
+  languagePreference String
+  pace             ItineraryPace
+  priorities      Json
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+}
+
+model SearchHistory {
+  id              String   @id @default(cuid())
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  cityId          String
+  city            City     @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  preferences     Json
+  topNeighborhoodSlugs Json
+  createdAt       DateTime @default(now())
+
+  @@index([userId, cityId])
+}
+
+model Itinerary {
+  id               String          @id @default(cuid())
+  userId           String?
+  user             User?           @relation(fields: [userId], references: [id], onDelete: SetNull)
+  cityId           String
+  city             City            @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  neighborhoodId   String
+  neighborhood     Neighborhood    @relation(fields: [neighborhoodId], references: [id], onDelete: Cascade)
+  travelerLabelId  String
+  title            String
+  durationDays     Int
+  pace             ItineraryPace
+  days             ItineraryDay[]
+  savedPlans       SavedPlan[]
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  @@index([cityId, neighborhoodId])
+}
+
+model ItineraryDay {
+  id           String          @id @default(cuid())
+  itineraryId  String
+  itinerary    Itinerary       @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  day          Int
+  theme        String
+  items        ItineraryItem[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+
+  @@index([itineraryId, day])
+}
+
+model ItineraryItem {
+  id             String       @id @default(cuid())
+  itineraryDayId String
+  itineraryDay   ItineraryDay  @relation(fields: [itineraryDayId], references: [id], onDelete: Cascade)
+  time           String
+  title          String
+  detail         String       @db.Text
+  tip            String       @db.Text
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model SavedNeighborhood {
+  id             String       @id @default(cuid())
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  neighborhoodId String
+  neighborhood   Neighborhood @relation(fields: [neighborhoodId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+
+  @@unique([userId, neighborhoodId])
+  @@index([userId])
+}
+
+model SavedPlan {
+  id           String      @id @default(cuid())
+  userId       String
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itineraryId  String
+  itinerary    Itinerary   @relation(fields: [itineraryId], references: [id], onDelete: Cascade)
+  title        String
+  createdAt    DateTime    @default(now())
+
+  @@unique([userId, itineraryId])
+}
+
+model Review {
+  id              String   @id @default(cuid())
+  userId          String?
+  user            User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+  cityId          String?
+  city            City?    @relation(fields: [cityId], references: [id], onDelete: SetNull)
+  travelerLabelId String
+  name            String
+  title           String
+  quote           String   @db.Text
+  rating          Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@index([cityId])
+}
+
+model AdminActivityLog {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  action      String
+  entity      String
+  details     String   @db.Text
+  createdAt   DateTime @default(now())
+
+  @@index([userId, action])
+}
